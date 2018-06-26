@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 
 namespace Poems
 {
@@ -6,11 +8,22 @@ namespace Poems
     {
         static void Main()
         {
-            string hokku =
-                $"Я прилег в тени, {Environment.NewLine}За меня толчет мой рис {Environment.NewLine}Горный ручеек.";
-            Console.WriteLine(hokku);
+            IPoem randomPoem = GetRandomPoem();
+            Console.WriteLine(randomPoem.Text);
 
-            Console.ReadLine();
+            Console.ReadKey();
+        }
+
+        private static IPoem GetRandomPoem()
+        {
+            Assembly myAssembly = Assembly.GetExecutingAssembly();
+            Type randomPoemType = myAssembly
+                .DefinedTypes
+                .Where(t => t.ImplementedInterfaces.Contains(typeof(IPoem)))
+                .OrderBy(x => Guid.NewGuid())
+                .First();
+
+            return (IPoem) Activator.CreateInstance(randomPoemType);
         }
     }
 }
