@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPoem.cs" />
+    <Compile Include="Poems\FTutchev.cs" />
     <Compile Include="Poems\IssaKobayasi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
