@@ -9,5 +9,8 @@ namespace Poems.Poems
     {
         /// <inheritdoc />
         public string Text => $"Я прилег в тени, {Environment.NewLine}За меня толчет мой рис {Environment.NewLine}Горный ручеек.";
+
+        /// <inheritdoc />
+        public string Author => "Исса Кобаяси";
     }
 }
